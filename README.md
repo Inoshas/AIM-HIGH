@@ -1,3 +1,5 @@
+# TESTITESTITESTI!
+
 # AIM-HIGH
 ## Autonomous Robot Project
 This Git repository houses the code and resources for our innovative project, which focuses on creating an autonomous robot capable of line following, obstacle detection, and obstacle avoidance. The project leverages the power of Lego Mindstorms, Python, and Raspberry Pi to bring this intelligent robot to life. Our goal is to develop a versatile system that can follow lines with precision, detect obstacles in its path, and intelligently navigate around them, all with potential applications in various industries.
