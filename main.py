@@ -20,15 +20,16 @@ kp=.27
 ki=0.003
 kd=0.03
 
+## Set this to slowdown the motors with PID error
 fixed_speed=25
-right_add=0
 
-	# Initializing the values
+
+# Initializing the values
 previous_error=0
 accum_error=0
 
-	# When define D value we need this to avoid division by zero
-	# or very low value
+# When define D value we need this to avoid division by zero
+# or very low value
 time_difference1=.0001
 time_difference2=1000
 
@@ -56,13 +57,14 @@ def path_follow():
 	error_difference=current_error-previous_error
     	# Integral (I)
 	accum_error = accum_error + current_error
-	print(current_error , " ce " , error_difference , "ed" , accum_error , "ae" )
+	#print(current_error , " ce " , error_difference , "ed" , accum_error , "ae" )
     	
-	#With PID : 
+	#With PID correction : 
 	new_speed=current_error*kp +(accum_error*ki*time_difference1)+ (error_difference*kd/time_difference2)
-	pair.start(-abs(fixed_speed-new_speed), abs(fixed_speed + right_add + new_speed)) 
+	# adjust speed:::
+	pair.start(-abs(fixed_speed-new_speed), abs(fixed_speed  + new_speed)) 
     
-    # Reassign values for next round
+    	# Reassign values for next round
 	previous_error = current_error
 	previous_time = current_time
 	current_time = datetime.now()
@@ -88,38 +90,62 @@ def distance_cal():
 	else:
 		obstacle_avoid()
 		
-
+#### Turning different directions
 def turn_right():
 	pair.run_for_degrees(225,-20,-20)
 	pair.stop()
 	time.sleep(.5)
-	'''
-	global distance
-	distance=dist.get_distance()
-	if distance > 150 or distance ==-1:
-		turn_left()
-		turn_left()	
-	
-	'''
+
 def turn_left():
 	pair.run_for_degrees(225,20,20)
 	pair.stop()
 	time.sleep(.5)
+#### Moving  front directions :
 
 def move_forward():
 	pair.run_for_rotations(2,-60,60)
 	pair.stop()
 	time.sleep(.5)
 
+### Avoid obstacle  in right side::
+def right_avoid():
+	print("I select first path: turn right")
+	move_forward()
+	turn_left()
+	move_forward()
+	turn_left()
+	move_forward()
+	turn_right()
+ 
+ 
+# Avoid obstacle in left side::
+def left_avoid():
+	global distance
+	print("I select turn left")
+	turn_left()
+	turn_left()
+	time.sleep(1)	
+	distance=dist.get_distance()
+	if distance < 300 and distance !=-1:
+		turn_right()
+		pair.stop()
+		time.sleep(3)
+		pair.start(40,-40)
+			
+	else:
+		move_forward()
+		turn_right()
+		move_forward()		
+		turn_right()
+		move_forward()
+		turn_left()
+
 def obstacle_avoid():
 	global previous_error, accum_error, time_difference1,time_difference2, current_time
-	
 	global distance
 	previous_error=0
 	accum_error=0
-
-	# When define D value we need this to avoid division by zero
-	# or very low value
+	# Reset values:::
 	time_difference1=.0001
 	time_difference2=1000
 
@@ -131,39 +157,15 @@ def obstacle_avoid():
 	print("dis", distance)
 	print("Here we check direction to turn")
 	if distance < 300 and distance != -1:
-		print("I select turn left")
-		turn_left()
-		turn_left()
-		time.sleep(1)	
-		distance=dist.get_distance()
-
-		if distance < 300 and distance !=-1:
-			turn_right()
-			pair.stop()
-			time.sleep(3)
-			pair.start(40,-40)
-			
-		else:
-			move_forward()
-			turn_right()
-			move_forward()		
-			turn_right()
-			move_forward()
-			turn_left()
+		left_avoid()
 	else:
-		print("I select first path: turn right")
-		move_forward()
-		turn_left()
-		move_forward()
-		turn_left()
-		move_forward()
-		turn_right()
+		right_avoid()
 	current_time=datetime.now()
 	
-	
-	#pair.default_speed(-15,15)
 	print("--------------Obstacle avoiding stoped------")
 #### main loop:::.
+
+
 while True:
 	distance_cal()
 	print("distance:", distance)
