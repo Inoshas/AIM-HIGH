@@ -12,6 +12,7 @@ The repository contains the source code, documentation, schematics, and addition
 - [Core Functionality](#core-functionality)
 - [Hardware and Software](#hardware-and-software)
 - [Project Phases](#project-phases)
+- [Identified issues and solutions](#identified-issues-and-solutions)
 - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
@@ -41,6 +42,37 @@ Our project is built upon three key components, each contributing to the robot's
 - **Programming Language:** Our project is primarily coded in Python, which offers a versatile environment for robotics development.
 
 - **Microcomputer:** The brain of our robot is the Raspberry Pi 4 microcomputer, complemented by the Lego BuildHAT for sensor integration.
+
+## Identified issues and solutions
+
+### Bug Report: Motors not Simultaneously Responding to `start(left_motor_speed, right_motor_speed)` when speed is less than 30.
+
+#### Description
+
+When using the `start(left_motor_speed, right_motor_speed)` command to simultaneously start both the left and right motors, we observed that the motors do not respond as expected. Instead, they seem to operate independently.
+
+#### Steps to Reproduce
+
+1. Initialize left and right motors.
+2. Use the `start(left_motor_speed, right_motor_speed)` command to start both motors simultaneously.
+3. Observe the behavior of the motors when the define speed is between -30 and 30.
+
+#### Expected Behavior
+
+We expect the left and right motors to respond simultaneously when the `start()` command is invoked.
+
+#### Actual Behavior
+
+The left and right motors operate independently, and their behavior does not synchronize as intended.
+
+#### Workaround
+
+We are looking for alternative solutins at the movement.
+
+
+2. **Compatibility Issue with ABC Library:**
+   - Explanation of the compatibility problem.
+   - Suggestions for alternative libraries or versions.
 
 ## Project Phases
 
