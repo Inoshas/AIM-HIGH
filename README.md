@@ -24,7 +24,7 @@ The repository contains the source code, documentation, schematics, and addition
 **Phase 1:** Line Following and Obstacle Avoidance
 In this phase, we have harnessed the potential of Lego Mindstorms, Python, and Raspberry Pi to create a robot that adeptly follows lines with precision, detects obstacles, and intelligently maneuvers around them. The completion of this phase establishes a solid foundation for our project.
 
-![Basic setup](images and videos/robot_1.png)
+![Basic setup](images_and_videos/robot_1.png)
 
 **Phase 2:** Machine Learning Application for Sign Recognition
 Our next undertaking involves the integration of machine learning techniques to enable the robot to interpret signs, with a primary emphasis on left and right directions. This phase will utilize the Raspberry Pi camera for image processing. While still a work in progress, Phase 2 aims to enhance the robot's cognitive abilities and expand its functionality.
