@@ -7,17 +7,25 @@ The repository contains the source code, documentation, schematics, and addition
 
 
 ## Table of Contents
-
-- [Project Phases](#project-phases)
 - [Hardware and Software](#hardware-and-software)
-- [Issues and Solutions](#issues-and-solutions)
+- [Project Phases](#project-phases)
 - [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
   - [Installation](#installation)
-- [Usage](#usage)
+  - [Usage](#usage)
+- [Issues and Solutions](#issues-and-solutions)
 - [Contribution Guidelines](#contribution-guidelines)
 - [License](#license)
 - [Acknowledgments](#acknowledgments)
+
+## Hardware and Software
+
+-**Lego Mindstorms Set:** We are using the Lego Mindstorms set, model number 51515, as the foundation for our robot's construction. This comprehensive set provides essential building blocks and components critical to the success of our project.
+
+-**Programming Language:** Our project is primarily coded in Python, chosen for its versatility and ease of use in the context of robotics development.
+
+-**Microcomputer:** The brain of our robot is powered by the Raspberry Pi 4, a powerful microcomputer that serves as the central processing unit for executing our code. Complementing the Raspberry Pi is the Lego BuildHAT, a dedicated hardware attachment facilitating seamless integration of sensors and enhancing the overall capabilities of our robot.
+
+-**Camera Module:** For advanced vision capabilities, we are utilizing the Raspberry Pi Camera Module. This allows our robot to capture visual data, a crucial aspect of the upcoming Phase 2 where we will be implementing machine learning for sign recognition.
 
 
 ## Project Phases:
@@ -33,19 +41,36 @@ Our next undertaking involves the integration of machine learning techniques to 
 The upcoming Phase 3 will introduce barcode reading capabilities to our robot. Additionally, we plan to integrate functionality to update a database based on the information gathered. This phase represents a pivotal step toward creating a versatile and intelligent robotic system with applications across diverse industries.
 
 
-## Hardware and Software
-
--**Lego Mindstorms Set:** We are using the Lego Mindstorms set, model number 51515, as the foundation for our robot's construction. This comprehensive set provides essential building blocks and components critical to the success of our project.
-
--**Programming Language:** Our project is primarily coded in Python, chosen for its versatility and ease of use in the context of robotics development.
-
--**Microcomputer:** The brain of our robot is powered by the Raspberry Pi 4, a powerful microcomputer that serves as the central processing unit for executing our code. Complementing the Raspberry Pi is the Lego BuildHAT, a dedicated hardware attachment facilitating seamless integration of sensors and enhancing the overall capabilities of our robot.
-
--**Camera Module:** For advanced vision capabilities, we are utilizing the Raspberry Pi Camera Module. This allows our robot to capture visual data, a crucial aspect of the upcoming Phase 2 where we will be implementing machine learning for sign recognition.
+## Getting Started
 
 
+### Installation
 
-(Image goes here)
+1. Clone this repository:
+    ```bash
+    git clone https://github.com/Inoshas/Raspberry-Pi-Build-Hat-demos-with-Mindstorm-51515
+
+Navigate to the project directory: 
+    ```bash
+
+    cd your-repository 
+
+Install project dependencies:
+    ```bash
+
+    sudo apt update
+    sudo apt install python3-buildhat
+Note: Replace python3 with python if your system uses Python 2.x.
+
+For more information and simple examples please follow below link.
+- [Basic instalation and configurations with mindstorm 51515](https://github.com/Inoshas/Raspberry-Pi-Build-Hat-demos-with-Mindstorm-51515)
+
+
+### Usage
+
+[Explain how to use the project once it's set up]
+
+
 
 ## Issues and Solutions
 #### Problem: Motors Not Functioning Well at Lower Speeds
@@ -67,21 +92,6 @@ These lines set a power limit (plimit) and bias for both the left and right moto
 By incorporating these lines into your code, you can enhance the functionality of your motors and achieve smoother operation, especially at lower speeds. We recommend documenting this solution to assist other users who may encounter similar motor performance issues.
 
 
-## Getting Started
-
-### Prerequisites
-
-Before getting started with the project, ensure you have the above hardware components and software installed.
-
-### Installation
-
-Follow these steps to set up your project:
-
-1. [Insert installation steps here- software+hardware.]
-
-## Usage
-
-[Explain how to use the project once it's set up]
 
 ## Contributors
 
