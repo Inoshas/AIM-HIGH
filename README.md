@@ -25,7 +25,7 @@ The repository contains the source code, documentation, schematics, and addition
 
 -**Microcomputer:** The brain of our robot is powered by the Raspberry Pi 4, a powerful microcomputer that serves as the central processing unit for executing our code. Complementing the Raspberry Pi is the Lego BuildHAT, a dedicated hardware attachment facilitating seamless integration of sensors and enhancing the overall capabilities of our robot.
 
--**Camera Module:** For advanced vision capabilities, we are utilizing the Raspberry Pi Camera Module. This allows our robot to capture visual data, a crucial aspect of the upcoming Phase 2 where we will be implementing machine learning for sign recognition.
+-**Camera Module:** For advanced vision capabilities, we are utilizing the Raspberry Pi Camera Module. This allows our robot to capture visual data, a crucial aspect of the upcoming Phase 2 and phase 3.
 
 
 ## Project Phases:
@@ -52,12 +52,10 @@ The upcoming Phase 3 will introduce barcode reading capabilities to our robot. A
 
 Navigate to the project directory: 
     ```bash
-
     cd your-repository 
 
 Install project dependencies:
     ```bash
-
     sudo apt update
     sudo apt install python3-buildhat
 Note: Replace python3 with python if your system uses Python 2.x.
@@ -67,8 +65,13 @@ For more information and simple examples please follow below link.
 
 
 ### Usage
+**Phase 1:**
 
-[Explain how to use the project once it's set up]
+
+[![Final video of fixing issues in your code in VS Code]
+(https://img.youtube.com/vi/JLMbpiywVxQ/maxresdefault.jpg)]
+(https://www.youtube.com/watch?v=JLMbpiywVxQ)
+
 
 
 

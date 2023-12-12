@@ -2,9 +2,8 @@ import os
 # Clear screen ::: 
 os.system('cls' if os.name == 'nt' else 'clear')
 from phase1 import correct_path_follower
-
+from phase2 import db_Qr, process_QR
 from buildhat import MotorPair, ColorSensor, DistanceSensor
-
 from datetime import datetime
 
 
@@ -49,14 +48,36 @@ pair.start(-15,15)
 # get current time:
 current_time=datetime.now()
 
+### Initializing values for DB creation
+db_name="mydatabase.db"
+table_name='inventory'
+qr_folder = "QR_Codes" 
+
+name="Olive"
+barcode="OL-finnishbrand-005"
+rackdetails="H67-R9-C1" 
+quantity=9
+
 
 #### main loop:::.
-#### create main object
+#### create main object for phase1:
 main_cpf = correct_path_follower(pair, color,dist, previous_error, accum_error,time_difference1, time_difference2, target_light,fixed_speed,current_time, kp, kd, ki)
+
+## Create_object for phase 2
+main_dbqr=db_Qr(db_name, table_name,  name, barcode, rackdetails, quantity, qr_folder )
+main_pqr=process_QR()
+
+################################################################
+### Uncomment this if you want to add data to dB and generate QR:::
+# Add another row to db and create QR code:
+#main_dbqr.db_table()
+#main_dbqr.generate_QR()
+
+#######################################################33
 
 while True:
     main_cpf.distance_cal()
-   
+
 	
 
 
