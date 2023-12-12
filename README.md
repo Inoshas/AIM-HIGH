@@ -67,10 +67,7 @@ For more information and simple examples please follow below link.
 ### Usage
 **Phase 1:**
 
-
-[![Final video of fixing issues in your code in VS Code]
-(https://img.youtube.com/vi/JLMbpiywVxQ/maxresdefault.jpg)]
-(https://www.youtube.com/watch?v=JLMbpiywVxQ)
+[Watch the video](https://www.youtube.com/shorts/L-W8-ZdgTtk)
 
 
 
