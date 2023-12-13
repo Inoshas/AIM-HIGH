@@ -34,11 +34,13 @@ In this phase, we have harnessed the potential of Lego Mindstorms, Python, and R
 
 ![Basic setup](images_and_videos/robot_1.png)
 
-**Phase 2:** Machine Learning Application for Sign Recognition
+**Phase 2:** Barcode Reading and Database Update
+The upcoming Phase 2 will introduce barcode reading capabilities to our robot. Additionally, we plan to integrate functionality to update a database based on the information gathered. This phase represents a pivotal step toward creating a versatile and intelligent robotic system with applications across diverse industries.
+
+
+**Phase 3:** Machine Learning Application for Sign Recognition
 Our next undertaking involves the integration of machine learning techniques to enable the robot to interpret signs, with a primary emphasis on left and right directions. This phase will utilize the Raspberry Pi camera for image processing. While still a work in progress, Phase 2 aims to enhance the robot's cognitive abilities and expand its functionality.
 
-**Phase 3:** Barcode Reading and Database Update
-The upcoming Phase 3 will introduce barcode reading capabilities to our robot. Additionally, we plan to integrate functionality to update a database based on the information gathered. This phase represents a pivotal step toward creating a versatile and intelligent robotic system with applications across diverse industries.
 
 
 ## Getting Started
@@ -69,9 +71,10 @@ For more information and simple examples please follow below link.
 
 [Watch the video](https://www.youtube.com/shorts/L-W8-ZdgTtk)
 
+**Phase 2:**
+ db_qr_generator.py is the file to add entries to the database and generate qr codes. We used this code to generate QR codes for the inventory.
 
-
-
+**Phase 3:**
 ## Issues and Solutions
 #### Problem: Motors Not Functioning Well at Lower Speeds
 **Description:**
