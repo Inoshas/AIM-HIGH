@@ -1,17 +1,19 @@
 # AIM-HIGH
 ## Autonomous Robot Project
 
-Welcome to the Git repository dedicated to our exciting robotics project. This initiative unfolds in several phases, each contributing to the development of an autonomous robot with advanced capabilities. As of now, we have successfully completed Phase 1, which focuses on line following and obstacle avoidance.
+Welcome to the Git repository dedicated to our thrilling robotics project. Our initiative progresses through multiple phases, each integral to the evolution of an autonomous robot equipped with cutting-edge capabilities. The successful culmination of Phase 1 marked a significant milestone, where we achieved proficiency in line following and obstacle avoidance.
+
+Building on this accomplishment, we are currently immersed in Phase 2. In this stage, our focus has shifted to incorporating barcode reading functionality and updating the database with real-time quantity changes. We are pleased to report that substantial progress has been made in this regard, showcasing our commitment to enhancing the robot's versatility.
+While the barcode reading and database update components are successfully integrated, we acknowledge that the implementation of object detection remains pending.
 
 The repository contains the source code, documentation, schematics, and additional materials necessary to build, operate, and extend our robot. By collaborating on this platform, we aim to refine and expand our project, exploring new features and use cases. We welcome contributions, feedback, and collaboration from the open-source and robotics communities to drive innovation and advance the field of autonomous robotics.
 
 
 ## Table of Contents
 - [Hardware and Software](#hardware-and-software)
-- [Project Phases](#project-phases)
 - [Getting Started](#getting-started)
   - [Installation](#installation)
-  - [Usage](#usage)
+- [Project Phases and Usage](#project-phases-and-usage)
 - [Issues and Solutions](#issues-and-solutions)
 - [Contribution Guidelines](#contribution-guidelines)
 - [License](#license)
@@ -28,6 +30,8 @@ The repository contains the source code, documentation, schematics, and addition
 -**Camera Module:** For advanced vision capabilities, we are utilizing the Raspberry Pi Camera Module. This allows our robot to capture visual data, a crucial aspect of the upcoming Phase 2 and phase 3.
 
 
+<<<<<<< HEAD
+=======
 ## Project Phases:
 **Phase 1:** Line Following and Obstacle Avoidance
 In this phase, we have harnessed the potential of Lego Mindstorms, Python, and Raspberry Pi to create a robot that adeptly follows lines with precision, detects obstacles, and intelligently maneuvers around them. The completion of this phase establishes a solid foundation for our project.
@@ -43,6 +47,7 @@ Our next undertaking involves the integration of machine learning techniques to 
 
 
 
+>>>>>>> 76ba6222bbcc5ac2d43aa95cdd643d7ed4795bf7
 ## Getting Started
 
 
@@ -66,13 +71,31 @@ For more information and simple examples please follow below link.
 - [Basic instalation and configurations with mindstorm 51515](https://github.com/Inoshas/Raspberry-Pi-Build-Hat-demos-with-Mindstorm-51515)
 
 
-### Usage
-**Phase 1:**
+## Project Phases and Usage:
+**Phase 1:** Line Following and Obstacle Avoidance
+In this phase, we have harnessed the potential of Lego Mindstorms, Python, and Raspberry Pi to create a robot that adeptly follows lines with precision, detects obstacles, and intelligently maneuvers around them. The completion of this phase establishes a solid foundation for our project.
 
-[Watch the video](https://www.youtube.com/shorts/L-W8-ZdgTtk)
+![Basic setup](images_and_videos/robot_1.png)
 
+<<<<<<< HEAD
+#### Usage:
+[Here you can watch our demo video ](https://www.youtube.com/shorts/L-W8-ZdgTtk)
+-[lego model will added soon]
+-[phase1.py]
+**Phase 2:** Barcode Reading and Database Update
+The upcoming Phase 2 will introduce barcode reading capabilities to our robot. Additionally, we plan to integrate functionality to update a database based on the information gathered. This phase represents a pivotal step toward creating a versatile and intelligent robotic system with applications across diverse industries.
+
+#### Usage:
+ db_qr_generator.py is the file to add entries to the database and generate qr codes. We used this code to generate QR codes for the inventory.
+-[phase2.py]
+
+**Phase 3:** Machine Learning Application for Sign Recognition
+Our next undertaking involves the integration of machine learning techniques to enable the robot to interpret signs, with a primary emphasis on left and right directions. This phase will utilize the Raspberry Pi camera for image processing. While still a work in progress, Phase 2 aims to enhance the robot's cognitive abilities and expand its functionality.
+#### Usage:
+=======
 **Phase 2:**
  db_qr_generator.py is the file to add entries to the database and generate qr codes. We used this code to generate QR codes for the inventory.
+>>>>>>> 76ba6222bbcc5ac2d43aa95cdd643d7ed4795bf7
 
 **Phase 3:**
 ## Issues and Solutions
