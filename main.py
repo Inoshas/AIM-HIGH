@@ -16,9 +16,6 @@ picam.preview_configuration.main.format="RGB888"
 picam.preview_configuration.align()
 
 
-phase2_obj=process_QR()
-phase2_obj.read_QR()
-
 #Define motor pair and sensors
 pair = MotorPair('A', 'B')
 color =ColorSensor('C')

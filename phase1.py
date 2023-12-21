@@ -66,7 +66,7 @@ class correct_path_follower():
         else:
             # Avoid the obstacle:::
             previous_error, current_time ,time_difference1, time_difference2=self.obstacle_avoid()
-            
+           
     #### Turning different directions
     def turn_right(self):
         self.pair.run_for_degrees(225,-20,-20)

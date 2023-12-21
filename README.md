@@ -12,7 +12,7 @@ The repository contains the source code, documentation, schematics, and addition
 ## Table of Contents
 - [Hardware and Software](#hardware-and-software)
 - [Getting Started](#getting-started)
-- [Installation](#installation)
+  - [Installation](#installation)
 - [Project Phases and Usage](#project-phases-and-usage)
 - [Issues and Solutions](#issues-and-solutions)
 - [Contribution Guidelines](#contribution-guidelines)
@@ -29,18 +29,6 @@ The repository contains the source code, documentation, schematics, and addition
 
 -**Camera Module:** For advanced vision capabilities, we are utilizing the Raspberry Pi Camera Module. This allows our robot to capture visual data, a crucial aspect of the upcoming Phase 2 and phase 3.
 
-
-## Project Phases:
-**Phase 1:** Line Following and Obstacle Avoidance
-In this phase, we have harnessed the potential of Lego Mindstorms, Python, and Raspberry Pi to create a robot that adeptly follows lines with precision, detects obstacles, and intelligently maneuvers around them. The completion of this phase establishes a solid foundation for our project.
-
-![Basic setup](images_and_videos/robot_1.png)
-
-**Phase 2:** Machine Learning Application for Sign Recognition
-Our next undertaking involves the integration of machine learning techniques to enable the robot to interpret signs, with a primary emphasis on left and right directions. This phase will utilize the Raspberry Pi camera for image processing. While still a work in progress, Phase 2 aims to enhance the robot's cognitive abilities and expand its functionality.
-
-**Phase 3:** Barcode Reading and Database Update
-The upcoming Phase 3 will introduce barcode reading capabilities to our robot. Additionally, we plan to integrate functionality to update a database based on the information gathered. This phase represents a pivotal step toward creating a versatile and intelligent robotic system with applications across diverse industries.
 
 ## Getting Started
 
@@ -65,11 +53,26 @@ For more information and simple examples please follow below link.
 - [Basic instalation and configurations with mindstorm 51515](https://github.com/Inoshas/Raspberry-Pi-Build-Hat-demos-with-Mindstorm-51515)
 
 
-### Usage
-**Phase 1:**
+## Project Phases and Usage:
+**Phase 1:** Line Following and Obstacle Avoidance
+In this phase, we have harnessed the potential of Lego Mindstorms, Python, and Raspberry Pi to create a robot that adeptly follows lines with precision, detects obstacles, and intelligently maneuvers around them. The completion of this phase establishes a solid foundation for our project.
 
-[Watch the video](https://www.youtube.com/shorts/L-W8-ZdgTtk)
+![Basic setup](images_and_videos/robot_1.png)
 
+#### Usage:
+[Here you can watch our demo video ](https://www.youtube.com/shorts/L-W8-ZdgTtk)
+-[lego model will added soon]
+-[phase1.py]
+**Phase 2:** Barcode Reading and Database Update
+The upcoming Phase 2 will introduce barcode reading capabilities to our robot. Additionally, we plan to integrate functionality to update a database based on the information gathered. This phase represents a pivotal step toward creating a versatile and intelligent robotic system with applications across diverse industries.
+
+#### Usage:
+ db_qr_generator.py is the file to add entries to the database and generate qr codes. We used this code to generate QR codes for the inventory.
+-[phase2.py]
+
+**Phase 3:** Machine Learning Application for Sign Recognition
+Our next undertaking involves the integration of machine learning techniques to enable the robot to interpret signs, with a primary emphasis on left and right directions. This phase will utilize the Raspberry Pi camera for image processing. While still a work in progress, Phase 2 aims to enhance the robot's cognitive abilities and expand its functionality.
+#### Usage:
 
 
 
