@@ -1,135 +1,127 @@
-#from datetime import datetime
-#import time
 
-import sqlite3
-import qrcode
 import cv2
+from picamera2 import Picamera2
+import sqlite3
 import os
-
-class db_Qr():  
-    def __init__(self, db_name, table_name, name, barcode, rackdetails, quantity, qr_folder):
-        self.table_name=table_name
-        self.db_name=db_name
-        self.name=name
-        self.barcode=barcode
-        self.rackdetails=rackdetails
-        self.quantity=quantity
-        self.qr_folder=qr_folder
-    
-    ### This function add values to database ::
-    def db_table(self):
-        print(self.db_name)
-        db = sqlite3.connect(self.db_name)
-        cur = db.cursor()
-        # id is the primary key for the table: 
-        # you can change if necessary.
-        
-        cur.execute("""
-            CREATE TABLE IF NOT EXISTS {table_name} (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            name TEXT,
-            barcode TEXT,
-            rackdetails TEXT,
-            quantity TEXT
-            )
-            """.format(table_name=self.table_name))
-
-        cur.execute("INSERT INTO Inventory ( name, barcode, rackdetails, quantity ) VALUES ( ?, ?, ? ,?)", (self.name, self.barcode,self.rackdetails, self.quantity))
-        #cur.execute("INSERT INTO Inventory (id, name, barcode, rackdetails, quantity ) VALUES (?, ?, ?, ? ,?)", (2, "cola", "CL-finishbrand-005", "H59-R9-C5", 4))
-        #cur.execute("INSERT INTO Inventory (id, name, barcode, rackdetails, quantity ) VALUES (?, ?, ?, ? ,?)", (3, "cup", "Cp-finishbrand-009", "H14-R8-C6", 4))
-        db.commit()
-        db.close()
-    
-    ## This is to generate QR codes for existing DB    
-    def generate_QR(self):
-        # Connect to the SQLite database (replace 'your_database.db' with your actual database file)
-        conn = sqlite3.connect(self.db_name)
-
-        # Create a cursor object to execute SQL queries
-        cursor = conn.cursor()
-
-        # Execute a SELECT query to fetch all rows from your table
-        cursor.execute('SELECT rackdetails FROM inventory')
-
-        # Fetch all the rows as a list of tuples
-        rows = cursor.fetchall()
-
-        count=1
-        # Iterate through the rows and print the values ('title' is one of the columns)
-        for row in rows:
-            data= row[0]  # index of the title column
-            qr = qrcode.QRCode(version = 1,
-                        box_size = 10,
-                        border = 5)
-        
-            # Adding data to the instance 'qr'
-            qr.add_data(data)
-        
-            qr.make(fit = True)
-            img = qr.make_image(fill_color = 'red',
-                            back_color = 'white')
-
-            qr_code_path = os.path.join(self.qr_folder, f'QR{count}.png')
-            img.save(qr_code_path)
-            count +=1
+import time
+import sys
+sys.path.append("/yolov5")
+from yolov5 import detect
 
 
+data=None
 
+   
 ##############################################################################
 
+                    
 class process_QR():
     
-    def __init__(self, pair, color,dist):
+    def __init__(self, pair, color,dist,picam,db_name):
         self.pair=pair
         self.color=color
         self.dist=dist
+        self.picam=picam
+        self.db_name=db_name
 
-    ### Stop motors when detect red :::
-    def stop_motors(self):
-        print(self.color.get_color())
-        if self.color.get_color()=='red':
-            self.pair.stop()
+
+    ### Stop motors when detect red and start reading QR code:::
+    def pass_QR(self):
+        self.pair.stop()
+        self.read_QR()
         
-    ## This function is to turn right:
-    ## We dont need to write this again, we can call the previous class      
-    def turn_move(self):
-        pass 
     
-    ## This function need to replace with camera reading and decoding QR code::
+    ## This function will read the QR code and exit the 'if loop'
+    # if it has detect  the QR code::
     def read_QR(self):
-        # Name of the QR Code Image file
-        filename = "QR2.png"
-        # read the QRCODE image
-        image = cv2.imread(filename)
-        # initialize the cv2 QRCode detector
+        global data
+        image_folder = os.path.join("yolov5", "data", "images")
+        if not os.path.exists(image_folder):
+            os.makedirs(image_folder)
+        # start the picam
+        self.picam.start()
+        # define QR detector
         detector = cv2.QRCodeDetector()
-        # detect and decode
-        data, vertices_array, binary_qrcode = detector.detectAndDecode(image)
-        # if there is a QR code
-        # print the data
-        if vertices_array is not None:
-            print("QRCode data:")
-            print(data)
-        else:
-            print("There was some error") 
+        while True:
+            
+            # Note that picam always capture pictures as arrays
+            frame=self.picam.capture_array()
+            _=self.picam.capture_array()
+            #_, frame = picam.read()
+            data, bbox, _ = detector.detectAndDecode(frame)
+            # make the box around QR code
+            if(bbox is not None):
+                bb_pts = bbox.astype(int).reshape(-1, 2)
+                num_bb_pts = len(bb_pts)
+                for i in range(num_bb_pts):
+                    cv2.line(frame,
+                            tuple(bb_pts[i]),
+                            tuple(bb_pts[(i+1) % num_bb_pts]),
+                            color=(255, 0, 255), thickness=2)
+                    # Here read the frame data:
+                    cv2.putText(frame, data,
+                            (bb_pts[0][0], bb_pts[0][1] - 10),
+                            cv2.FONT_HERSHEY_SIMPLEX,
+                            0.5, (0, 255, 0), 2)
+                # If you read the QR code: disable camera and move forward
+                if data:
+                    print("data found: ", data)
+                    image_path = os.path.join(image_folder, "QR_detect.jpg")
+                    cv2.imwrite(image_path, frame)
+                    time.sleep(3)
+                    self.picam.stop()
+                    detect.yolo5_run()
+                    #self.match_QR()
+                    self.pair.run_for_rotations(1,-15,15)
+                    print('leaving loop')
+                    return
+           
+        # Destroy all windows::            
+            cv2.destroyAllWindows()
 
-    
+
     # This function is to match the QR code output with existing one::
-    def match_QR():
-        pass
+    # And for now we are updating the quantity of the relevant QRcode product:::
+    def match_QR(self):
+        global data
+        con = sqlite3.connect(self.db_name)
+
+        # Create a cursor object to execute SQL queries
+        cursor = con.cursor()
+        # Update DB inventory quantity column
+        query_update = "UPDATE inventory SET quantity = quantity + 1 WHERE rackdetails = ?"
+        cursor.execute(query_update, (data,))
+
+        # Commit the changes
+        con.commit()
+
+        # Execute a SELECT query to fetch the updated quantity
+        query_select = "SELECT quantity FROM inventory WHERE rackdetails = ?"
+        cursor.execute(query_select, (data,))
+        updated_quantity = cursor.fetchone()[0]
         
-    #This function is to notify the shop about mismatches   
-    def notify():
-        pass
+        # Execute a SELECT query to fetch the updated quantity
+        query_select = "SELECT name FROM inventory WHERE rackdetails = ?"
+        cursor.execute(query_select, (data,))
+        name_col = cursor.fetchone()[0]
+
+        # Close the cursor and connection
+        cursor.close()
+        con.close()
+
+        # Print the updated quantity
+        print(f"Quantity updated. {name_col} and its new quantity: {updated_quantity} ")
+        print("***************")
+    
+        # Iterate through the rows and print the values ('title' is one of the columns)
         
-    ##Rather calling all functions in main, we can define one function to call above functions
-    # like phase 1: then we need only one line to procedd phase 1 
-    def QR_final_process():
-        #1.stop motors when detect red
-        #2. read QR code 
-        #3. get the picture of the product
-        #4. comparison
-        #5. notify 
+    #These functions are for expansions:::
+    def object_detect():
         pass
+    def notify(self):
+        pass
+    
+        
+ 
     
 

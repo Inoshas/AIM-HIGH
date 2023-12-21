@@ -2,7 +2,7 @@ from datetime import datetime
 import time
 
 class correct_path_follower():
-    def __init__(self, pair, color,dist, previous_error, accum_error,time_difference1, time_difference2, target_light,fixed_speed,current_time, kp, kd, ki):
+    def __init__(self, pair, color,dist, previous_error, accum_error,time_difference1, time_difference2, target_light,fixed_speed,current_time, kp, kd, ki, phase2_obj):
      
         self.pair=pair
         self.color=color
@@ -17,6 +17,7 @@ class correct_path_follower():
         self.kp=kp  
         self.ki=ki
         self.kd=kd
+        self.phase2_obj=phase2_obj
         
     
     ### The  path following function:::
@@ -32,7 +33,7 @@ class correct_path_follower():
 			
 		#With PID correction : 
         new_speed=current_error*self.kp +(self.accum_error*self.ki*self.time_difference1)+(error_difference*self.kd/self.time_difference2)
-        print("new_speed",new_speed, "**", error_difference*self.kd)
+        #print("new_speed",new_speed, "**", error_difference*self.kd)
 		# adjust speed:::
         self.pair.start(-abs(self.fixed_speed-new_speed), abs(self.fixed_speed  + new_speed)) 
 		
@@ -49,17 +50,23 @@ class correct_path_follower():
     
 	## Act based on current Distance:::
     def distance_cal(self):
-        #global distance
         global previous_error, previous_time, current_time ,time_difference1, time_difference2
+        #self.phase2_obj.pass_QR() 
         
         distance=self.dist.get_distance()
+        ## If there is no obstacle:::
         if distance > 150 or distance ==-1:
-            previous_error, previous_time, current_time ,time_difference1, time_difference2=self.path_follow()
-            
+            color_read=self.color.get_color()
+            ##If the color is red :::
+            if color_read=='red':
+                self.phase2_obj.pass_QR() 
+            else:
+                ## follow the path::
+                previous_error, previous_time, current_time ,time_difference1, time_difference2=self.path_follow()          
         else:
-
+            # Avoid the obstacle:::
             previous_error, current_time ,time_difference1, time_difference2=self.obstacle_avoid()
-                
+           
     #### Turning different directions
     def turn_right(self):
         self.pair.run_for_degrees(225,-20,-20)
@@ -113,21 +120,15 @@ class correct_path_follower():
                 self.turn_right()
                 self.move_forward()
                 self.turn_left()
-
-        #else:
-             #previous_error, previous_time, current_time ,time_difference1, time_difference2=self.path_follow()
-          # ############################
         time.sleep(1)	
         
         
     def obstacle_avoid(self):
-
+        # Reset values:::
         self.previous_error=0
         self.accum_error=0
-        # Reset values:::
         self.time_difference1=.0001
         self.time_difference2=1000
-
 
         print("--------------Obstacle avoiding started------")
         self.turn_right()
