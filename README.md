@@ -18,6 +18,7 @@ The repository contains the source code, documentation, schematics, and addition
   - [Installation](#installation)
 - [Project Phases and Usage](#project-phases-and-usage)
 - [Issues and Solutions](#issues-and-solutions)
+- [Contributors](#contributors)
 - [License](#license)
 - [Acknowledgments](#acknowledgments)
 
@@ -73,7 +74,7 @@ The phase1.py script encapsulates Python code for path following and obstacle de
 ### Phase 2: QR-code Reading and Database Update
 In Phase 2, we leverage the Raspberry Pi camera module and the OpenCV library to implement QR code detection in our robotics project. This phase marks our venture into integrating machine vision, where we incorporate existing machine learning models.
 
-For testing purposes, we have integrated two distinct projects into our system. The first, utilizing the [YOLOv5](https://github.com/ultralytics/yolov5)model, involves capturing and processing images upon QR code detection. The second project, denoted as (***) for now, focuses on real-time object detection.
+For testing purposes, we have integrated two distinct projects into our system. The first, utilizing the [YOLOv5](https://github.com/ultralytics/yolov5) model, involves capturing and processing images upon QR code detection. The second project, denoted as (***) for now, focuses on real-time object detection.
 
 Currently, the YOLOv5 model is successfully integrated into our project, enhancing its capabilities. Stay tuned for the upcoming integration of the (***) model.
 
