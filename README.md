@@ -1,10 +1,13 @@
 # AIM-HIGH
 ## Autonomous Robot Project
 
-Welcome to the Git repository dedicated to our thrilling robotics project. Our initiative progresses through multiple phases, each integral to the evolution of an autonomous robot equipped with cutting-edge capabilities. The successful culmination of Phase 1 marked a significant milestone, where we achieved proficiency in line following and obstacle avoidance.
+Welcome to our Git repository dedicated to our robotics project. This project progresses through distinct phases, each critical in developing an autonomous robot with advanced capabilities.
 
-Building on this accomplishment, we are currently immersed in Phase 2. In this stage, our focus has shifted to incorporating barcode reading functionality and updating the database with real-time quantity changes. We are pleased to report that substantial progress has been made in this regard, showcasing our commitment to enhancing the robot's versatility.
-While the barcode reading and database update components are successfully integrated, we acknowledge that the implementation of object detection remains pending.
+In Phase 1, we successfully achieved proficiency in line following and obstacle avoidance, marking a significant milestone.
+
+Building on this success, Phase 2 saw the integration of QR-code reading functionality along with object detection, enabling a comprehensive set of capabilities. We're pleased to report substantial progress in these areas, showcasing our commitment to enhancing the robot's versatility.
+
+Feel free to explore our repository to learn more about the project's evolution and the exciting developments in each phase.
 
 The repository contains the source code, documentation, schematics, and additional materials necessary to build, operate, and extend our robot. By collaborating on this platform, we aim to refine and expand our project, exploring new features and use cases. We welcome contributions, feedback, and collaboration from the open-source and robotics communities to drive innovation and advance the field of autonomous robotics.
 
@@ -15,7 +18,6 @@ The repository contains the source code, documentation, schematics, and addition
   - [Installation](#installation)
 - [Project Phases and Usage](#project-phases-and-usage)
 - [Issues and Solutions](#issues-and-solutions)
-- [Contribution Guidelines](#contribution-guidelines)
 - [License](#license)
 - [Acknowledgments](#acknowledgments)
 
@@ -39,14 +41,17 @@ The repository contains the source code, documentation, schematics, and addition
     ```bash
     git clone https://github.com/Inoshas/Raspberry-Pi-Build-Hat-demos-with-Mindstorm-51515
 
-Navigate to the project directory: 
+2. Navigate to the project directory: 
     ```bash
-    cd your-repository 
-
-Install project dependencies:
+      cd your-repository 
+    ```
+    
+3. Install project dependencies:
     ```bash
-    sudo apt update
-    sudo apt install python3-buildhat
+      sudo apt update
+      sudo apt install python3-buildhat
+    ```
+    
 Note: Replace python3 with python if your system uses Python 2.x.
 
 For more information and simple examples please follow below link.
@@ -54,26 +59,28 @@ For more information and simple examples please follow below link.
 
 
 ## Project Phases and Usage:
-**Phase 1:** Line Following and Obstacle Avoidance
+### Phase 1: Line Following and Obstacle Avoidance
+![Basic setup of the robot](images_and_videos/robot_1.png)
+
+
 In this phase, we have harnessed the potential of Lego Mindstorms, Python, and Raspberry Pi to create a robot that adeptly follows lines with precision, detects obstacles, and intelligently maneuvers around them. The completion of this phase establishes a solid foundation for our project.
 
-![Basic setup](images_and_videos/robot_1.png)
+ **Usage:**
+The phase1.py script encapsulates Python code for path following and obstacle detection in our robotics project. For path following, we implement a Proportional-Integral-Derivative (PID) control model to regulate the robot's speed. In the event of obstacle detection, the robot dynamically assesses alternative routes in both right and left directions if available. If no clear paths are found, the robot patiently waits until its designated path becomes unobstructed.
 
-#### Usage:
-[Here you can watch our demo video ](https://www.youtube.com/shorts/L-W8-ZdgTtk)
--[lego model will added soon]
--[phase1.py]
-**Phase 2:** Barcode Reading and Database Update
-The upcoming Phase 2 will introduce barcode reading capabilities to our robot. Additionally, we plan to integrate functionality to update a database based on the information gathered. This phase represents a pivotal step toward creating a versatile and intelligent robotic system with applications across diverse industries.
+[Here you can watch our demo video.](https://www.youtube.com/shorts/L-W8-ZdgTtk)
 
-#### Usage:
- db_qr_generator.py is the file to add entries to the database and generate qr codes. We used this code to generate QR codes for the inventory.
--[phase2.py]
+### Phase 2: QR-code Reading and Database Update
+In Phase 2, we leverage the Raspberry Pi camera module and the OpenCV library to implement QR code detection in our robotics project. This phase marks our venture into integrating machine vision, where we incorporate existing machine learning models.
 
-**Phase 3:** Machine Learning Application for Sign Recognition
-Our next undertaking involves the integration of machine learning techniques to enable the robot to interpret signs, with a primary emphasis on left and right directions. This phase will utilize the Raspberry Pi camera for image processing. While still a work in progress, Phase 2 aims to enhance the robot's cognitive abilities and expand its functionality.
-#### Usage:
+For testing purposes, we have integrated two distinct projects into our system. The first, utilizing the [YOLOv5](https://github.com/ultralytics/yolov5)model, involves capturing and processing images upon QR code detection. The second project, denoted as (***) for now, focuses on real-time object detection.
 
+Currently, the YOLOv5 model is successfully integrated into our project, enhancing its capabilities. Stay tuned for the upcoming integration of the (***) model.
+
+**Usage:**
+The mydatabase.db file serves as the dedicated database for our project, capturing and organizing entries generated by the db_qr_generator.py script. This structured repository houses our project's inventory data, and the script also generates QR codes, storing them in the QR_code folder.
+
+Within the phase2.py script, we seamlessly integrate barcode and object detection using the YOLOv5 model. Looking ahead, we plan to further enhance this functionality by incorporating real-time object detection with the upcoming (***) module. In this phase, once the robot detects a QR code, it captures an image and identifies the corresponding object. This innovative approach allows us to compare database entries with the current location, providing valuable insights, especially in retail settings. For instance, the robot can determine whether goods are placed in the correct rack within a shop.
 
 
 ## Issues and Solutions
@@ -99,10 +106,8 @@ By incorporating these lines into your code, you can enhance the functionality o
 
 ## Contributors
 
-- [Antti Buller](https://github.com/anatt1b)
-  
+- [Antti Buller](https://github.com/anatt1b)  
 - [Inosha Sugathapala](https://github.com/Inoshas)
- 
 - [Mari Kivioja](https://github.com/Veaiga)
 
 
@@ -110,6 +115,12 @@ By incorporating these lines into your code, you can enhance the functionality o
 
 
 ## Acknowledgments
+
+This project has received funding from OpriFrame and serves as the final project associated with the work training provided by OpriFrame.
+
+- [Opiframe](https://opiframe.com)  
+- [Janne Kemppi](https://jannekemppi.wordpress.com) 
+- [Jussi Riihijärvi](https://www.linkedin.com/in/jussiriihij%C3%A4rvi)
 
 
 
