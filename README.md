@@ -131,10 +131,10 @@ This project has received funding from OpriFrame and serves as the final project
 - [Raspberry pi build-hat library details](https://github.com/RaspberryPiFoundation/python-build-hat/tree/main/buildhat)
 - [Propotional line follower basics](https://youtu.be/Z8Cv60f75LI?t=785)
 - [PID controller basics](https://en.wikipedia.org/wiki/Proportional%E2%80%93integral%E2%80%93derivative_controller)
-- [Mindstorm 51515 motor speed adjustments]{https://github.com/RaspberryPiFoundation/python-build-hat/issues/152}
-- [Raspberry-pi camera module]{https://youtu.be/kuJpdAf07WQ?t=1737}
-- [Yolo5 in pytorch]{https://www.youtube.com/watch?v=fu2tfOV9vbY}
-- [Object detection with tensorflow]{https://www.youtube.com/watch?v=3YqbO2AlepM&t=349s}
+- [Mindstorm 51515 motor speed adjustments](https://github.com/RaspberryPiFoundation/python-build-hat/issues/152)
+- [Raspberry-pi camera module](https://youtu.be/kuJpdAf07WQ?t=1737)
+- [Yolo5 in pytorch](https://www.youtube.com/watch?v=fu2tfOV9vbY)
+- [Object detection with tensorflow](https://www.youtube.com/watch?v=3YqbO2AlepM&t=349s)
 
 
 
