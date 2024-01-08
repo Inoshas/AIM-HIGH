@@ -5,7 +5,7 @@ Welcome to our Git repository dedicated to our robotics project. This project pr
 
 In Phase 1, we successfully achieved proficiency in line following and obstacle avoidance, marking a significant milestone.
 
-Building on this success, Phase 2 saw the integration of QR-code reading functionality along with object detection, enabling a comprehensive set of capabilities. We're pleased to report substantial progress in these areas, showcasing our commitment to enhancing the robot's versatility.
+Building on this success, Phase 2 show the integration of QR-code reading functionality along with object detection, enabling a comprehensive set of capabilities. We're pleased to report substantial progress in these areas, showcasing our commitment to enhancing the robot's versatility.
 
 Feel free to explore our repository to learn more about the project's evolution and the exciting developments in each phase.
 
@@ -132,7 +132,7 @@ This project has received funding from OpriFrame and serves as the final project
 - [Mindstorm 51515 motor speed adjustments](https://github.com/RaspberryPiFoundation/python-build-hat/issues/152)
 - [Raspberry-pi camera module](https://youtu.be/kuJpdAf07WQ?t=1737)
 - [Yolo5 in pytorch](https://www.youtube.com/watch?v=fu2tfOV9vbY)
-- [Object detection with tensorflow](https://www.youtube.com/watch?v=3YqbO2AlepM&t=349s)
+  
 
 
 
