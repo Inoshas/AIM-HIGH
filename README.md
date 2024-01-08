@@ -118,7 +118,7 @@ MIT-Licence
 
 ## Acknowledgments
 
-This project has received funding from OpriFrame and serves as the final project associated with the work training provided by OpriFrame.
+This project has received funding from OpriFrame and serves as the final project associated with the work training provided by Opiframe.
 
 - [Opiframe](https://opiframe.com)  
 - [Janne Kemppi](https://jannekemppi.wordpress.com) 
